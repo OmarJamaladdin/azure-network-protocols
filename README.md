@@ -22,10 +22,9 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Create resources (resource group, windows 10 VM, Linux(Ubuntu) VM) 
+- Create resources (resource group, windows 10 VM, Linux(Ubuntu) VM)
+- Install WireShark to observe traffic
 - Observe ICMP Traffic (Use NSG to stop inbound ICMP traffic)
-- Step 3
-- Step 4
 
 <h2>Actions and Observations</h2>
 
