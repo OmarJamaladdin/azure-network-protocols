@@ -12,7 +12,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 - Microsoft Azure (Virtual Machines/Compute)
 - Microsoft Remote Desktop (MAC)
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
@@ -23,7 +23,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>High-Level Steps</h2>
 
 - Create resources (resource group, windows 10 VM, Linux(Ubuntu) VM) 
-- Observe ICMP Traffic
+- Observe ICMP Traffic (Use NSG to stop inbound ICMP traffic)
 - Step 3
 - Step 4
 
@@ -35,20 +35,16 @@ First I created a resource group RG-Lab and then I created a Windows 10 Virtual 
 While creating the VM, I allowed it to create a new Virtual Network (Vnet) and Subnet. Following this I created a Linux (Ubuntu) VM (VM2)
 and when creating the VM I selected the previously created Resource Group and Vnet from my first VM. Since I am using a Macbook, I also had to install Microsoft Remote Desktop in oder to remotely connect to my created VM's.
 
-<br />
+![image](https://github.com/OmarJamaladdin/azure-network-protocols/assets/140512686/35d6fb97-75eb-46e8-83f3-5ef615d32298)
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+In step 2 I am now using powershell and using ping (icmp protocol) to send icmp traffic to VM2's private IP address and as you can see the ping is continuous meaning it will not end.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+![image](https://github.com/OmarJamaladdin/azure-network-protocols/assets/140512686/bcf152ba-9c25-4b19-9ba7-d32bf5bb2bf0)
+
+Now as you can see I went back into Azure and started to configure with VM2's NSG or Network Security Group. Here I added an inbound security rule to deny all inbound icmp traffic to VM2.
+
+
+![image](https://github.com/OmarJamaladdin/azure-network-protocols/assets/140512686/e4d4048b-5b4b-4a31-82ca-a854b9c82546)
+
+
+As a result of creating the Inbound security rule in VM2's Network security group, you can see that the icmp traffic no longer comes through and is being denied. In the image above, you can see that in Powershell there are no more replies and the requests continuosly times out. Also you can see via Wireshark in the background that there are still ping (icmp) requests coming from VM1 but there are no more replies coming from VM2's private IP address.
