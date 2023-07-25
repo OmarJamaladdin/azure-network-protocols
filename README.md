@@ -33,7 +33,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 First I created a resource group RG-Lab and then I created a Windows 10 Virtual Machine (VM1)
 While creating the VM, I allowed it to create a new Virtual Network (Vnet) and Subnet. Following this I created a Linux (Ubuntu) VM (VM2)
-and when creating the VM I selected the previously created Resource Group and Vnet from my first VM.
+and when creating the VM I selected the previously created Resource Group and Vnet from my first VM. Since I am using a Macbook, I also had to install Microsoft Remote Desktop in oder to remotely connect to my created VM's.
 
 <br />
 
