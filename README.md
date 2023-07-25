@@ -36,7 +36,7 @@ and when creating the VM I selected the previously created Resource Group and Vn
 
 ![image](https://github.com/OmarJamaladdin/azure-network-protocols/assets/140512686/35d6fb97-75eb-46e8-83f3-5ef615d32298)
 
-In step 2 I am now using powershell and using ping (icmp protocol) to send icmp traffic to VM2's private IP address and as you can see the ping is continuous meaning it will not end.
+In step 2 I am now using powershell to ping (icmp protocol) icmp traffic to VM2's private IP address and as you can see I've set the ping to be continuous meaning it will not end. I am also using wireshark to observe the traffic between VM1 and VM2's private IP address.
 
 ![image](https://github.com/OmarJamaladdin/azure-network-protocols/assets/140512686/bcf152ba-9c25-4b19-9ba7-d32bf5bb2bf0)
 
